@@ -38,14 +38,19 @@ struct Karma {
 
 
 // Create non-living Entities
-let water = Entity(withConsciousness: 0.0, andNature: "wet")
+
+class NonLivingEntity: Entity {
+
+}
+
+let fire = NonLivingEntity(withConsciousness: 0.0, andNature: "heat")
+print("Fire is a \(fire)")
+
+let water = NonLivingEntity(withConsciousness: 0.0, andNature: "wet")
 print("Water is a \(water)")
 print(water.mutatingDharma(byVirtueOf: water.nature))
 
 
-let fire = Entity(withConsciousness: 0.0, andNature: "burn")
-print("Fire is a \(fire)")
-print(fire.mutatingDharma(byVirtueOf: fire.nature))
 
 
 // A Living Entity
@@ -76,7 +81,7 @@ extension DharmaProtocol where Self: Jiva {
     }
 }
 
-let human = Jiva(withConsciousness: 100.0, andNature: "serve others", andKarma: .init(good: 5.7, bad: 3.9))
+let human = Jiva(withConsciousness: 100.0, andNature: "serve other Jivas", andKarma: .init(good: 5.7, bad: 3.9))
 let human2 = Jiva(withConsciousness: 100.0, andNature: "love", andKarma: .init(good: 5.3, bad: 243.2))
 
 print("This Human is a \(human)")
@@ -90,5 +95,8 @@ print("This human has accumulated \(human2.karma.good) points of Good Karma")
 print("This human has accumulated \(human2.karma.bad) points of Bad Karma")
 print("This human is at a Consciousness Level of \(human2.consciousness).")
 print(human2.mutatingDharma(byVirtueOf: human2.nature, andKarma: human2.karma))
+
+let rabbit = Jiva(withConsciousness: 34.5, andNature: "be cute", andKarma: .init(good: 56.3, bad: 4.9))
+print(rabbit.mutatingDharma(byVirtueOf: rabbit.nature))
 
 
